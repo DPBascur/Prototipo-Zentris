@@ -7,6 +7,7 @@ import sounddevice as sd
 import soundfile as sf
 from faster_whisper import WhisperModel
 import azure.cognitiveservices.speech as speechsdk
+import json
 
 # Control de volumen
 from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume
@@ -23,7 +24,19 @@ model = WhisperModel("medium", device="cuda", compute_type="float16")
 
 # === HISTORIAL Y MEMORIA ===
 chat_history = []
-memoria = {}
+MEMORIA_PATH = "memoria.json"
+
+def cargar_memoria():
+    if os.path.exists(MEMORIA_PATH):
+        with open(MEMORIA_PATH, "r", encoding="utf-8") as f:
+            return json.load(f)
+    return {}
+
+def guardar_memoria(memoria):
+    with open(MEMORIA_PATH, "w", encoding="utf-8") as f:
+        json.dump(memoria, f, ensure_ascii=False, indent=2)
+
+memoria = cargar_memoria()
 
 # === SÍNTESIS DE VOZ CON AZURE ===
 def say(text):
@@ -72,6 +85,7 @@ def procesar_memoria_usuario(texto):
         if ":" in info:
             clave, valor = [i.strip() for i in info.split(":", 1)]
             memoria[clave.lower()] = valor
+            guardar_memoria(memoria)
             return f"Lo recordaré, {clave} es {valor}."
         else:
             return "Por favor usa el formato: recuerda que [clave]: [valor]."
