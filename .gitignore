@@ -1,4 +1,59 @@
-# Carpetas comunes
+# =========================
+# Secretos y configuracion local
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+# Entornos virtuales
+# =========================
+.venv/
 venv/
-debug_input.wav
+env/
+ENV/
+
+# =========================
+# Python cache y compilados
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# =========================
+# Artefactos de build/distribucion
+# =========================
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# =========================
+# Herramientas y pruebas
+# =========================
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# =========================
+# Datos locales del bot
+# =========================
+memory.json
 memoria.json
+profile.json
+debug_input.wav
+
+# =========================
+# Bases vectoriales/local DB
+# =========================
+chroma/
+chroma_db/
+
+# =========================
+# Sistema operativo e IDE
+# =========================
+.DS_Store
+Thumbs.db
