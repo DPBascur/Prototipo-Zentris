@@ -1,0 +1,100 @@
+[
+  {"id": 1, "category": "saludo", "prompt": "Hola Zentris", "expected_keywords": ["hola", "escucho"]},
+  {"id": 2, "category": "saludo", "prompt": "Como estas?", "expected_keywords": ["bien", "listo"]},
+  {"id": 3, "category": "perfil", "prompt": "Que sabes de mi?", "expected_keywords": ["compartes", "conversacion"]},
+  {"id": 4, "category": "perfil", "prompt": "Como te llamas?", "expected_keywords": ["zentris"]},
+  {"id": 5, "category": "math", "prompt": "Resuelve x + 2 = 5", "expected_keywords": ["x", "3"]},
+  {"id": 6, "category": "math", "prompt": "Resuelve el sistema x+y=5; x-y=1", "expected_keywords": ["x", "y"]},
+  {"id": 7, "category": "math", "prompt": "Simplifica (x^2 - 1)/(x - 1)", "expected_keywords": ["x", "+"]},
+  {"id": 8, "category": "math", "prompt": "Despeja y de 2x + 8 = y", "expected_keywords": ["y", "2", "x"]},
+  {"id": 9, "category": "seguimiento", "prompt": "Encuentra x e y", "expected_keywords": ["x", "y"]},
+  {"id": 10, "category": "seguimiento", "prompt": "Y por que no escalonas?", "expected_keywords": ["escal"]},
+  {"id": 11, "category": "clima", "prompt": "Como esta el clima en Temuco?", "expected_keywords": ["clima", "temuco"]},
+  {"id": 12, "category": "fecha_hora", "prompt": "Que hora es?", "expected_keywords": [":"]},
+  {"id": 13, "category": "fecha_hora", "prompt": "Que fecha es hoy?", "expected_keywords": ["/"]},
+  {"id": 14, "category": "tecnico", "prompt": "Estoy creando una IA, ayudame con una arquitectura base", "expected_keywords": ["arquitect", "modul"]},
+  {"id": 15, "category": "tecnico", "prompt": "Como mejoro latencia en un bot local con ollama?", "expected_keywords": ["latencia", "modelo"]},
+  {"id": 16, "category": "tecnico", "prompt": "Dame pasos para debuggear errores de contexto", "expected_keywords": ["paso", "contexto"]},
+  {"id": 17, "category": "tono", "prompt": "Gracias", "expected_keywords": ["nada"]},
+  {"id": 18, "category": "tono", "prompt": "Vale", "expected_keywords": ["perfecto"]},
+  {"id": 19, "category": "tono", "prompt": "No", "expected_keywords": ["entiendo"]},
+  {"id": 20, "category": "seguimiento", "prompt": "Quiero que recuerdes esto: estudio informatica", "expected_keywords": ["inform"]},
+  {"id": 21, "category": "perfil", "prompt": "Me llamo Daniel", "expected_keywords": ["daniel"]},
+  {"id": 22, "category": "tecnico", "prompt": "Que modelo usarias para analisis de imagenes?", "expected_keywords": ["vision", "modelo"]},
+  {"id": 23, "category": "tecnico", "prompt": "Como haria fallback de modelo si falla uno?", "expected_keywords": ["fallback", "modelo"]},
+  {"id": 24, "category": "tecnico", "prompt": "Dame una lista breve de mejoras para mi bot", "expected_keywords": ["1", "2", "3"]},
+  {"id": 25, "category": "math", "prompt": "Deriva x^2 + 3x", "expected_keywords": ["x"]},
+  {"id": 26, "category": "math", "prompt": "Integral de x", "expected_keywords": ["x"]},
+  {"id": 27, "category": "clima", "prompt": "Temperatura en Santiago", "expected_keywords": ["santiago", "clima"]},
+  {"id": 28, "category": "seguimiento", "prompt": "Responde solo en una frase", "expected_keywords": []},
+  {"id": 29, "category": "tecnico", "prompt": "Como validarias respuestas fuera de tema?", "expected_keywords": ["verific", "tema"]},
+  {"id": 30, "category": "tecnico", "prompt": "Que metricas usarias para evaluar un asistente?", "expected_keywords": ["coher", "latencia"]},
+  {"id": 31, "category": "saludo", "prompt": "hola", "expected_keywords": ["hola"]},
+  {"id": 32, "category": "saludo", "prompt": "wena", "expected_keywords": ["hola"]},
+  {"id": 33, "category": "saludo", "prompt": "que tal", "expected_keywords": ["bien"]},
+
+  {"id": 34, "category": "corto", "prompt": "si", "expected_keywords": []},
+  {"id": 35, "category": "corto", "prompt": "no", "expected_keywords": []},
+  {"id": 36, "category": "corto", "prompt": "ya", "expected_keywords": []},
+  {"id": 37, "category": "corto", "prompt": "dale", "expected_keywords": []},
+  {"id": 38, "category": "corto", "prompt": "ok", "expected_keywords": []},
+
+  {"id": 39, "category": "seguimiento", "prompt": "pero no entiendo", "expected_keywords": ["explica"]},
+  {"id": 40, "category": "seguimiento", "prompt": "explicalo mas simple", "expected_keywords": ["simple"]},
+  {"id": 41, "category": "seguimiento", "prompt": "hazlo paso a paso", "expected_keywords": ["paso"]},
+  {"id": 42, "category": "seguimiento", "prompt": "eso no era lo que queria", "expected_keywords": ["corregir"]},
+
+  {"id": 43, "category": "tecnico", "prompt": "esto se puede hacer?", "expected_keywords": ["si"]},
+  {"id": 44, "category": "tecnico", "prompt": "como empiezo con esto", "expected_keywords": ["pasos"]},
+  {"id": 45, "category": "tecnico", "prompt": "que recomiendas usar?", "expected_keywords": ["modelo"]},
+  {"id": 46, "category": "tecnico", "prompt": "esto esta bien hecho?", "expected_keywords": ["mejorar"]},
+  {"id": 47, "category": "tecnico", "prompt": "como lo mejoro?", "expected_keywords": ["optimizar"]},
+
+  {"id": 48, "category": "ia", "prompt": "que modelo uso?", "expected_keywords": ["modelo"]},
+  {"id": 49, "category": "ia", "prompt": "cual es mejor mistral o llama?", "expected_keywords": ["compar"]},
+  {"id": 50, "category": "ia", "prompt": "hay algo mas rapido?", "expected_keywords": ["rapido"]},
+  {"id": 51, "category": "ia", "prompt": "por que responde lento?", "expected_keywords": ["latencia"]},
+
+  {"id": 52, "category": "debug", "prompt": "me da error", "expected_keywords": ["error"]},
+  {"id": 53, "category": "debug", "prompt": "no funciona", "expected_keywords": ["revisar"]},
+  {"id": 54, "category": "debug", "prompt": "que esta mal aqui", "expected_keywords": ["error"]},
+  {"id": 55, "category": "debug", "prompt": "porque pasa esto", "expected_keywords": ["explica"]},
+
+  {"id": 56, "category": "arquitectura", "prompt": "como armo esto completo", "expected_keywords": ["arquitectura"]},
+  {"id": 57, "category": "arquitectura", "prompt": "como conecto todo", "expected_keywords": ["flujo"]},
+  {"id": 58, "category": "arquitectura", "prompt": "como hago que todo funcione junto", "expected_keywords": ["sistema"]},
+
+  {"id": 59, "category": "automatizacion", "prompt": "esto lo puedo automatizar?", "expected_keywords": ["automatizar"]},
+  {"id": 60, "category": "automatizacion", "prompt": "como lo dejo automatico", "expected_keywords": ["flujo"]},
+
+  {"id": 61, "category": "voz", "prompt": "como hago que escuche mi voz", "expected_keywords": ["voz"]},
+  {"id": 62, "category": "voz", "prompt": "como detecto cuando digo zentris", "expected_keywords": ["wake"]},
+
+  {"id": 63, "category": "memoria", "prompt": "quiero que recuerde esto", "expected_keywords": ["guardar"]},
+  {"id": 64, "category": "memoria", "prompt": "te acuerdas de esto?", "expected_keywords": ["memoria"]},
+
+  {"id": 65, "category": "optimizacion", "prompt": "como hago esto mas rapido", "expected_keywords": ["optimizar"]},
+  {"id": 66, "category": "optimizacion", "prompt": "esto consume mucho", "expected_keywords": ["recurso"]},
+
+  {"id": 67, "category": "infra", "prompt": "puedo apagar el pc y que siga todo?", "expected_keywords": ["persistencia"]},
+  {"id": 68, "category": "infra", "prompt": "como entro a mi pc remoto", "expected_keywords": ["ssh"]},
+
+  {"id": 69, "category": "docker", "prompt": "esto va en docker?", "expected_keywords": ["docker"]},
+  {"id": 70, "category": "docker", "prompt": "como lo dockerizo", "expected_keywords": ["docker"]},
+
+  {"id": 71, "category": "random", "prompt": "hazlo mejor", "expected_keywords": ["mejorar"]},
+  {"id": 72, "category": "random", "prompt": "mejoralo", "expected_keywords": ["optimizar"]},
+  {"id": 73, "category": "random", "prompt": "arreglalo", "expected_keywords": ["fix"]},
+
+  {"id": 74, "category": "meta", "prompt": "esto esta bien?", "expected_keywords": ["evaluar"]},
+  {"id": 75, "category": "meta", "prompt": "vamos bien?", "expected_keywords": ["progreso"]},
+
+  {"id": 76, "category": "vision", "prompt": "que modelo uso para imagenes", "expected_keywords": ["yolo"]},
+  {"id": 77, "category": "vision", "prompt": "como detecto objetos", "expected_keywords": ["deteccion"]},
+
+  {"id": 78, "category": "flujo", "prompt": "como conecto telegram con ia", "expected_keywords": ["bot"]},
+  {"id": 79, "category": "flujo", "prompt": "como hago todo el flujo completo", "expected_keywords": ["pipeline"]},
+
+  {"id": 80, "category": "cierre", "prompt": "gracias", "expected_keywords": ["nada"]},
+  {"id": 81, "category": "cierre", "prompt": "vale", "expected_keywords": ["ok"]}
+]

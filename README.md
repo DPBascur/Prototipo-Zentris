@@ -77,11 +77,59 @@ BALANCED_MODEL=mistral
 REASONING_MODEL=mistral
 VISION_MODEL=llava
 
+APP_MODE=telegram
+
 MAX_HISTORY=1200
 REQUEST_TIMEOUT=60
 STREAM_UPDATE_INTERVAL=0.9
 MIN_EDIT_DELTA=20
+
+VOICE_RECORD_SECONDS=5
+VOICE_SAMPLE_RATE=16000
+VOICE_MODEL_SIZE=base
+VOICE_LANGUAGE=es
+VOICE_INPUT_DEVICE=
+VOICE_TTS_ENABLED=true
+VOICE_TTS_RATE=170
+VOICE_TTS_PROVIDER=local
+
+AZURE_SPEECH_KEY=
+AZURE_SPEECH_REGION=
+AZURE_SPEECH_VOICE=es-MX-JorgeNeural
+
+VOICE_NOISE_CALIBRATION_SECONDS=1.0
+VOICE_NOISE_GATE_MULTIPLIER=2.0
+VOICE_MIN_SPEECH_SECONDS=0.5
+VOICE_SILENCE_TIMEOUT_SECONDS=1.0
+VOICE_MAX_RECORD_SECONDS=8.0
+
+VOICE_STT_BEAM_SIZE=6
+VOICE_STT_BEST_OF=4
+VOICE_STT_TEMPERATURE=0.0
+VOICE_STT_NO_SPEECH_THRESHOLD=0.6
+VOICE_STT_LOGPROB_THRESHOLD=-1.2
+VOICE_VAD_MIN_SILENCE_MS=500
+
+VOICE_FORCE_FAST_MODEL=true
+VOICE_PROFILE_EXTRACT_LLM=false
+
+FORCE_GPU=false
+STT_DEVICE=cpu
+EMBEDDING_DEVICE=cpu
 ```
+
+Modos disponibles en APP_MODE:
+
+- telegram: solo bot de Telegram.
+- local: solo asistente local por voz.
+- hybrid: Telegram y voz local al mismo tiempo.
+
+Configuracion de GPU:
+
+- `FORCE_GPU=true` fuerza CUDA para STT y embeddings, y valida CUDA al iniciar.
+- Si `FORCE_GPU=false`, puedes elegir manualmente:
+	- `STT_DEVICE=cpu|cuda`
+	- `EMBEDDING_DEVICE=cpu|cuda`
 
 ## Modelos en Ollama
 
@@ -107,6 +155,37 @@ Desde la raíz del proyecto:
 
 ```powershell
 python bot.py
+```
+
+Para modo local por voz, instala también:
+
+```powershell
+pip install numpy sounddevice soundfile faster-whisper pyttsx3
+```
+
+Listar micrófonos disponibles y su índice:
+
+```powershell
+python scripts/list_audio_devices.py
+```
+
+Luego copia ese índice en `VOICE_INPUT_DEVICE` dentro de `.env`.
+
+Para usar voz de Azure en modo local:
+
+1. Instala el SDK:
+
+```powershell
+pip install azure-cognitiveservices-speech
+```
+
+2. Configura en `.env`:
+
+```env
+VOICE_TTS_PROVIDER=azure
+AZURE_SPEECH_KEY=tu_clave
+AZURE_SPEECH_REGION=tu_region
+AZURE_SPEECH_VOICE=es-MX-JorgeNeural
 ```
 
 Si todo está correcto, verás en consola:
@@ -157,6 +236,11 @@ Recomendaciones:
 
 - Es normal durante la primera carga de sentence-transformers.
 - Las siguientes ejecuciones suelen ser más rápidas.
+
+4. Error con FORCE_GPU=true
+
+- Verifica que CUDA este disponible y los drivers instalados.
+- Si no tienes GPU compatible, usa `FORCE_GPU=false`.
 
 ## Estado actual
 

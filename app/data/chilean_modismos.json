@@ -1,0 +1,129 @@
+{
+  "nicknames": [
+    "compa",
+    "bro",
+    "socio",
+    "hermano",
+    "compare",
+    "crack",
+    "jefe",
+    "amigo",
+    "maquina",
+    "capo"
+  ],
+
+  "direct_replacements": {
+    "amigo": "{nick}",
+    "Amigo": "{nick_cap}",
+    "amiga": "{nick}",
+    "Amiga": "{nick_cap}",
+
+    "te ayudo": "te apano",
+    "te ayudo al tiro": "te apano al tiro",
+    "te puedo ayudar": "te puedo apanar",
+    "te voy a ayudar": "te voy a apanar",
+
+    "que necesitas": "que necesitai",
+    "¿que necesitas?": "que necesitai?",
+    "¿qué necesitas?": "que necesitai?",
+    "en que te ayudo": "en que te apano",
+
+    "todo bien": "todo piola",
+    "muy bien": "bacan",
+    "perfecto": "de lujo",
+    "excelente": "la raja",
+
+    "de acuerdo": "dale",
+    "ok": "ya",
+    "vale": "ya",
+    "está bien": "ta bien",
+    "está perfecto": "ta filete",
+
+    "entiendo": "cacho",
+    "comprendo": "cacho",
+    "ya veo": "ah ya cacho",
+
+    "rápido": "al tiro",
+    "enseguida": "al tiro",
+    "inmediatamente": "al tiro",
+
+    "sin problema": "de una",
+    "no hay problema": "de una",
+    "claro": "de una",
+
+    "estoy aquí para ayudarte": "aqui estoy pa apanar",
+    "puedo hacerlo": "de una lo hago",
+    "lo puedo hacer": "de una, lo hago",
+
+    "vamos a hacerlo": "ya, hagamosla",
+    "vamos paso a paso": "vamos piola, paso a paso",
+
+    "esto funciona": "esto anda",
+    "esto no funciona": "esto no pesca",
+    "no funciona": "no pesca",
+
+    "error": "error, algo no cuadra",
+    "fallo": "fallo, algo no cuadra",
+
+    "intenta esto": "prueba esto",
+    "haz esto": "haz esto no mas",
+
+    "es fácil": "es facil igual",
+    "es complicado": "esta medio peluo",
+    "no te preocupes": "tranqui"
+  },
+
+  "context_templates": {
+    "greeting": [
+      "Wena {nick}, todo piola por aca. Y tu?",
+      "Buena {nick}, aqui ando. Te leo.",
+      "Que tal {nick}, cuentame no mas.",
+      "Hola {nick}, en que te apano?",
+      "Wena po {nick}, que necesitas?",
+      "Dale {nick}, estoy atento."
+    ],
+
+    "thanks": [
+      "De una, {nick}. Cualquier cosa me dices.",
+      "Dale {nick}, pa eso estamos.",
+      "Bacan, {nick}. Si queris, seguimos.",
+      "Tranqui {nick}, cuando quieras seguimos.",
+      "De una {nick}, me avisas no mas.",
+      "Ya {nick}, feliz de ayudarte."
+    ],
+
+    "error": [
+      "Mmm {nick}, algo no cuadra aca, revisemos.",
+      "Ojo {nick}, esto no esta funcionando bien.",
+      "Ya {nick}, hay un error, pero lo arreglamos al tiro.",
+      "Esto no pesca {nick}, revisemos que onda."
+    ],
+
+    "explanation": [
+      "Ya {nick}, te explico piola:",
+      "Mira {nick}, la mano es asi:",
+      "Te cuento {nick}, esto funciona asi:",
+      "Te cuento rapido {nick}:"
+    ],
+
+    "step_by_step": [
+      "Ya {nick}, hagamosla paso a paso:",
+      "Vamos de a poco {nick}:",
+      "Te lo dejo clarito {nick}, sigue esto:"
+    ],
+
+    "confirmation": [
+      "Si {nick}, de una.",
+      "Si, esto anda bien.",
+      "Si {nick}, esta correcto.",
+      "De una {nick}, vas super bien."
+    ],
+
+    "fallback": [
+      "No cache bien eso {nick}, explicate un poco mas.",
+      "Mmm {nick}, no me quedo tan claro, dame mas contexto.",
+      "No te segui bien {nick}, puedes decirlo de otra forma?",
+      "Te cacho a medias {nick}, tirame un poco mas de detalle."
+    ]
+  }
+}

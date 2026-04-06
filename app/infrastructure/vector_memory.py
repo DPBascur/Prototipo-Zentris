@@ -5,11 +5,15 @@ from sentence_transformers import SentenceTransformer
 
 
 class VectorMemory:
-    def __init__(self, logger):
+    def __init__(self, settings, logger):
         self.logger = logger
+        self.settings = settings
         self.client = chromadb.Client()
         self.collection = self.client.get_or_create_collection(name="zentris_memory")
-        self.embedding_model = SentenceTransformer("paraphrase-MiniLM-L3-v2")
+        self.embedding_model = SentenceTransformer(
+            "paraphrase-MiniLM-L3-v2",
+            device=self.settings.embedding_device,
+        )
 
     def save_memory(self, user_id: str, text: str) -> None:
         try:

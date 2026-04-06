@@ -1,4 +1,5 @@
 import json
+import re
 
 import httpx
 
@@ -44,6 +45,15 @@ class OllamaClient:
                 self.settings.vision_model,
             )
 
+    def _build_options(self, temperature: float | None = None) -> dict:
+        options = {}
+        if temperature is not None:
+            options["temperature"] = temperature
+        if self.settings.force_gpu:
+            # Ollama puede ignorar esta opcion segun el backend, pero ayuda a evitar fallback a CPU.
+            options["num_gpu"] = 1
+        return options
+
     async def stream_text(self, prompt: str, model: str, temperature: float = 0.25):
         timeout = httpx.Timeout(self.settings.request_timeout)
         async with httpx.AsyncClient(timeout=timeout) as client:
@@ -54,7 +64,7 @@ class OllamaClient:
                     "model": model,
                     "prompt": prompt,
                     "stream": True,
-                    "options": {"temperature": temperature},
+                    "options": self._build_options(temperature),
                 },
             ) as response:
                 response.raise_for_status()
@@ -83,14 +93,45 @@ class OllamaClient:
                     "model": model,
                     "prompt": prompt,
                     "stream": False,
+                    "options": self._build_options(),
                 },
             )
             response.raise_for_status()
 
         payload = response.json()
         text = payload.get("response", "{}").strip()
-        parsed = json.loads(text)
+        parsed = self._parse_json_object(text)
         return parsed if isinstance(parsed, dict) else {}
+
+    def _parse_json_object(self, text: str) -> dict:
+        if not text:
+            return {}
+
+        try:
+            parsed = json.loads(text)
+            return parsed if isinstance(parsed, dict) else {}
+        except Exception:
+            pass
+
+        fenced = re.search(r"```(?:json)?\s*(\{[\s\S]*?\})\s*```", text, re.IGNORECASE)
+        if fenced:
+            try:
+                parsed = json.loads(fenced.group(1))
+                return parsed if isinstance(parsed, dict) else {}
+            except Exception:
+                pass
+
+        first = text.find("{")
+        last = text.rfind("}")
+        if first != -1 and last != -1 and last > first:
+            candidate = text[first : last + 1]
+            try:
+                parsed = json.loads(candidate)
+                return parsed if isinstance(parsed, dict) else {}
+            except Exception:
+                return {}
+
+        return {}
 
     async def generate_text(self, prompt: str, model: str) -> str:
         timeout = httpx.Timeout(self.settings.request_timeout)
@@ -101,7 +142,7 @@ class OllamaClient:
                     "model": model,
                     "prompt": prompt,
                     "stream": False,
-                    "options": {"temperature": 0.2},
+                    "options": self._build_options(0.2),
                 },
             )
             response.raise_for_status()
@@ -119,7 +160,7 @@ class OllamaClient:
                     "prompt": prompt,
                     "images": [image_b64],
                     "stream": False,
-                    "options": {"temperature": 0.2},
+                    "options": self._build_options(0.2),
                 },
             )
             if response.status_code >= 400:
